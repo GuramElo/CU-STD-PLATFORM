@@ -2,10 +2,10 @@ const { shareAll, withModuleFederationPlugin } = require('@angular-architects/mo
 
 module.exports = withModuleFederationPlugin({
 
-  name: 'cu-std-forms',
+  name: 'cu-std-home',
 
   exposes: {
-    './Routes': './apps/cu-std-forms/src/app/app.routes.ts'
+    './Routes': './apps/cu-std-home/src/app/app.routes.ts'
   },
 
   shared: {
