@@ -27,10 +27,16 @@
             "glob": "**/*",
             "input": "./libs/cu-i/src/assets",
             "output": "./assets"
-          }
+          },
+          {
+            "glob": "**/*",
+            "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+            "output": "/assets/"
+           }
         ],
         "styles": [
-          "apps/cu-std-plat/src/styles.scss"
+          "apps/cu-std-plat/src/styles.scss",
+          "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
         ],
         "scripts": [],
         "customWebpackConfig": {
