@@ -22,7 +22,12 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/cu-std-plat/src/favicon.ico",
-          "apps/cu-std-plat/src/assets"
+          "apps/cu-std-plat/src/assets",
+          {
+            "glob": "**/*",
+            "input": "./libs/cu-i/src/assets",
+            "output": "./assets"
+          }
         ],
         "styles": [
           "apps/cu-std-plat/src/styles.scss"
