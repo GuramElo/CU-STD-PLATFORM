@@ -1,9 +1,9 @@
 {
-  "name": "cu-std-plat",
+  "name": "cu-std-forms",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "apps/cu-std-plat/src",
+  "sourceRoot": "apps/cu-std-forms/src",
   "tags": [],
   "targets": {
     "build": {
@@ -12,24 +12,24 @@
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "dist/apps/cu-std-plat",
-        "index": "apps/cu-std-plat/src/index.html",
-        "main": "apps/cu-std-plat/src/main.ts",
+        "outputPath": "dist/apps/cu-std-forms",
+        "index": "apps/cu-std-forms/src/index.html",
+        "main": "apps/cu-std-forms/src/main.ts",
         "polyfills": [
           "zone.js"
         ],
-        "tsConfig": "apps/cu-std-plat/tsconfig.app.json",
+        "tsConfig": "apps/cu-std-forms/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-          "apps/cu-std-plat/src/favicon.ico",
-          "apps/cu-std-plat/src/assets"
+          "apps/cu-std-forms/src/favicon.ico",
+          "apps/cu-std-forms/src/assets"
         ],
         "styles": [
-          "apps/cu-std-plat/src/styles.scss"
+          "apps/cu-std-forms/src/styles.scss"
         ],
         "scripts": [],
         "customWebpackConfig": {
-          "path": "apps/cu-std-plat/webpack.config.js"
+          "path": "apps/cu-std-forms/webpack.config.js"
         },
         "commonChunk": false
       },
@@ -49,7 +49,7 @@
           ],
           "outputHashing": "all",
           "customWebpackConfig": {
-            "path": "apps/cu-std-plat/webpack.prod.config.js"
+            "path": "apps/cu-std-forms/webpack.prod.config.js"
           }
         },
         "development": {
@@ -67,23 +67,23 @@
       "executor": "@nx/angular:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "cu-std-plat:build:production"
+          "buildTarget": "cu-std-forms:build:production"
         },
         "development": {
-          "buildTarget": "cu-std-plat:build:development"
+          "buildTarget": "cu-std-forms:build:development"
         }
       },
       "defaultConfiguration": "development",
       "options": {
-        "port": 3098,
-        "publicHost": "http://localhost:3098"
+        "port": 3099,
+        "publicHost": "http://localhost:3099"
       }
     },
     "extract-i18n": {
       "executor": "ngx-build-plus:extract-i18n",
       "options": {
-        "buildTarget": "cu-std-plat:build",
-        "extraWebpackConfig": "apps/cu-std-plat/webpack.config.js"
+        "buildTarget": "cu-std-forms:build",
+        "extraWebpackConfig": "apps/cu-std-forms/webpack.config.js"
       }
     },
     "lint": {
@@ -95,7 +95,7 @@
         "{workspaceRoot}/coverage/{projectRoot}"
       ],
       "options": {
-        "jestConfig": "apps/cu-std-plat/jest.config.ts"
+        "jestConfig": "apps/cu-std-forms/jest.config.ts"
       }
     }
   }
