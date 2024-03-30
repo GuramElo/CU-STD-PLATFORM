@@ -1,3 +1,4 @@
 {
-	"mfe1": "http://localhost:3000/remoteEntry.js"
+	"cu-std-home": "https://cukbook.com:3100/remoteEntry.js",
+  "cu-std-forms": "https://cukbook.com:3099/remoteEntry.js"
 }

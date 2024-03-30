@@ -10,30 +10,16 @@
     "importHelpers": true,
     "target": "es2020",
     "module": "esnext",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@cu-std-components": [
-        "libs/components/src/index.ts"
-      ],
-      "@cu-std-facade": [
-        "libs/facade/src/index.ts"
-      ],
-      "@cu-std-shared": [
-        "libs/shared/src/index.ts"
-      ],
-      "@cu-std-ui": [
-        "libs/cu-i/src/index.ts"
-      ]
+      "@cu-std-components": ["libs/components/src/index.ts"],
+      "@cu-std-facade": ["libs/facade/src/index.ts"],
+      "@cu-std-shared": ["libs/shared/src/index.ts"],
+      "@cu-std-ui": ["libs/cu-i/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

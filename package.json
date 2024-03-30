@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "run:all:dev": "nx run-many --target=serve --projects cu-std-plat,cu-std-forms --maxParallel=100 --host cukbook.com --disable-host-check --ssl",
+    "run:all:dev": "nx run-many --target=serve --projects cu-std-plat,cu-std-forms,cu-std-home --maxParallel=100 --host cukbook.com --disable-host-check --ssl",
     "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
