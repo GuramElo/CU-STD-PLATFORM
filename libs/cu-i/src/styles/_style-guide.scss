@@ -1,0 +1,111 @@
+:root {
+  //colors
+  --primary-blue: #2d71a4;
+
+  //shadow
+  //--drop-shadow-navigation: 4px 7px 8px rgba(0, 0, 0, 0.3);
+  //--drop-shadow-main: 49px 36px 42px rgba(0, 0, 0, 0.25);
+  //--drop-shadow-inner: inset 0px -4px 20px rgba(0, 0, 0, 0.4);
+
+  //spacing
+  --base-size: 4px;
+  --size-4: var(--base-size);
+  --size-6: calc(var(--base-size) * 1.5);
+  --size-7: calc(var(--base-size) * 1.75);
+  --size-8: calc(var(--base-size) * 2);
+  --size-9: calc(var(--base-size) * 2.25);
+  --size-10: calc(var(--base-size) * 2.5);
+  --size-11: calc(var(--base-size) * 2.75);
+  --size-12: calc(var(--base-size) * 3);
+  --size-14: calc(var(--base-size) * 3.5);
+  --size-16: calc(var(--base-size) * 4);
+  --size-17: calc(var(--base-size) * 4.25);
+  --size-18: calc(var(--base-size) * 4.5);
+  --size-20: calc(var(--base-size) * 5);
+  --size-22: calc(var(--base-size) * 5.5);
+  --size-24: calc(var(--base-size) * 6);
+  --size-26: calc(var(--base-size) * 6.5);
+  --size-28: calc(var(--base-size) * 7);
+  --size-30: calc(var(--base-size) * 7.5);
+  --size-32: calc(var(--base-size) * 8);
+  --size-36: calc(var(--base-size) * 9);
+  --size-38: calc(var(--base-size) * 9.5);
+  --size-40: calc(var(--base-size) * 10);
+  --size-41: calc(var(--base-size) * 10.25);
+  --size-42: calc(var(--base-size) * 10.5);
+  --size-44: calc(var(--base-size) * 11);
+  --size-46: calc(var(--base-size) * 11.5);
+  --size-48: calc(var(--base-size) * 12);
+  --size-50: calc(var(--base-size) * 12.5);
+  --size-56: calc(var(--base-size) * 14);
+  --size-60: calc(var(--base-size) * 14.5);
+  --size-64: calc(var(--base-size) * 16);
+  --size-68: calc(var(--base-size) * 17);
+  --size-70: calc(var(--base-size) * 17.5);
+
+  // Font sizes
+  --base-font-size: 10px;
+  --font-size-8: calc(var(--base-font-size) * 0.8);
+  --font-size-10: calc(var(--base-font-size) * 1);
+  --font-size-12: calc(var(--base-font-size) * 1.2);
+  --font-size-14: calc(var(--base-font-size) * 1.4);
+  --font-size-16: calc(var(--base-font-size) * 1.6);
+  --font-size-18: calc(var(--base-font-size) * 1.8);
+  --font-size-20: calc(var(--base-font-size) * 2);
+  --font-size-24: calc(var(--base-font-size) * 2.4);
+  --font-size-26: calc(var(--base-font-size) * 2.6);
+  --font-size-30: calc(var(--base-font-size) * 3);
+
+  // Line height
+  --base-line-height-size: 10px;
+  --line-height-size-8: calc(var(--base-line-height-size) * 0.8);
+  --line-height-size-10: calc(var(--base-line-height-size) * 1);
+  --line-height-size-12: calc(var(--base-line-height-size) * 1.2);
+  --line-height-size-14: calc(var(--base-line-height-size) * 1.4);
+  --line-height-size-16: calc(var(--base-line-height-size) * 1.6);
+  --line-height-size-18: calc(var(--base-line-height-size) * 1.8);
+  --line-height-size-20: calc(var(--base-line-height-size) * 2);
+  --line-height-size-24: calc(var(--base-line-height-size) * 2.4);
+
+  //typography
+  //icon sizes
+  --icon-size-16: 16px;
+  --icon-size-24: 24px;
+  --icon-size-32: 32px;
+
+  //border-radius
+  --border-radius-2: 2px;
+  --border-radius-4: 4px;
+  --border-radius-6: 6px;
+  --border-radius-8: 8px;
+  --border-radius-12: 12px;
+  --border-radius-16: 16px;
+  --border-radius-17: 17px;
+  --border-radius-20: 20px;
+  --border-radius-22: 22px;
+  --border-radius-24: 24px;
+  --border-radius-26: 26px;
+  --border-radius-27: 27px;
+  --border-radius-28: 28px;
+  --border-radius-30: 30px;
+  --border-radius-32: 32px;
+  --border-radius-36: 36px;
+  --border-radius-33: 33px;
+  --border-radius-40: 40px;
+  --border-radius-41: 41px;
+  --border-radius-42: 42px;
+  --border-radius-48: 48px;
+  --border-radius-49: 49px;
+  --border-radius-50: 50px;
+  --border-radius-52: 52px;
+  --border-radius-56: 56px;
+  --border-radius-70: 70px;
+  --border-radius-82: 82px;
+  --border-radius-90: 90px;
+  --border-radius-91: 91px;
+  --border-radius-100: 100px;
+
+  // modal
+  --modal-width: 600px;
+  --modal-backdrop-color: rgba(0, 0, 0, 0.8);
+}

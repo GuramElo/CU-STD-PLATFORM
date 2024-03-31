@@ -184,24 +184,6 @@ $z-index: (
   @return map-get($z-index, $key);
 }
 
-$font-size-map: (
-  size-8: var(--font-size-10),
-  size-10: var(--font-size-12),
-  size-12: var(--font-size-14),
-  size-14: var(--font-size-16),
-  size-16: var(--font-size-18),
-  size-18: var(--font-size-20),
-  size-20: var(--font-size-20),
-  size-22: var(--font-size-24),
-  size-24: var(--font-size-26),
-  size-28: var(--font-size-30),
-);
-
-@mixin fontSize($key) {
-  font-size: map-get($font-size-map, $key);
-  line-height: var(--line-height-#{$key});
-}
-
 @mixin z-index($key) {
   z-index: z-index($key);
 }
@@ -316,11 +298,7 @@ $font-size-map: (
     }
   }
 }
-@mixin InputBoxShadow(
-  $h: var(--size-40),
-  $bg: var(--primary-dark-blue-main),
-  $txt: var(--functional-white-rgb)
-) {
+@mixin InputBoxShadow($h: 40px, $bg: var(--primary-blue), $txt: white) {
   $box-shadow: 0 0 0 calc($h * 2) $bg inset;
   box-shadow: $box-shadow;
   &:-webkit-autofill {
@@ -350,10 +328,7 @@ $font-size-map: (
   }
 }
 
-@mixin skeleton(
-  $display: block,
-  $bkColor: rgba(var(--functional-white-rgb), 0.2)
-) {
+@mixin skeleton($display: block, $bkColor: rgba(white, 0.2)) {
   display: $display;
   background-color: $bkColor;
 }
@@ -373,12 +348,12 @@ $font-size-map: (
   right: $right;
   top: $top;
   transform: translateY($translateY) translatex($translateX);
-  border-radius: var(--size-8);
+  border-radius: 8px;
   background-color: var(--primary-dark-blue-brighter2);
-  @include fontSize(size-12);
-  color: var(--functional-white);
-  font-family: var(--croco-sans-mkh);
-  padding: var(--size-12) var(--size-9);
+  font-size: 12px;
+  color: white;
+  //font-family: var(--croco-sans-mkh);
+  padding: 12px 9px;
   white-space: nowrap;
   visibility: hidden;
   opacity: 0;
@@ -400,8 +375,8 @@ $font-size-map: (
   }
 
   @include desktop-1366 {
-    @include fontSize(size-10);
-    padding: var(--size-10) var(--size-7);
+    font-size: 10px;
+    padding: 10px 7px;
   }
 }
 

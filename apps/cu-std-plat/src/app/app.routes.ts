@@ -1,10 +1,10 @@
 import { Route } from '@angular/router';
-import { LayoutContainerComponent } from '../components/layout/layout-container.component';
 import { loadRemoteModule } from '@angular-architects/module-federation';
+import { CuLayoutComponent } from '../components/cu-layout/cu-layout.component';
 export const appRoutes: Route[] = [
   {
     path: '',
-    component: LayoutContainerComponent,
+    component: CuLayoutComponent,
     children: [
       {
         path: '',
