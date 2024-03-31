@@ -42,7 +42,10 @@
         "customWebpackConfig": {
           "path": "apps/cu-std-plat/webpack.config.js"
         },
-        "commonChunk": false
+        "commonChunk": false,
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/ui/src/styles"]
+        }
       },
       "configurations": {
         "production": {

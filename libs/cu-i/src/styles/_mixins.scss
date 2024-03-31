@@ -1,0 +1,481 @@
+@mixin desktop-1366 {
+  @media screen and (max-width: 1367px) {
+    @content;
+  }
+}
+
+@mixin desktop-1023 {
+  @media screen and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin desktop-1024 {
+  @media screen and (max-width: 1025px) {
+    @content;
+  }
+}
+
+@mixin desktop-1440 {
+  @media screen and (max-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin desktop-1620 {
+  @media screen and (max-width: 1621px) {
+    @content;
+  }
+}
+
+@mixin desktop-1750 {
+  @media screen and (max-width: 1751px) {
+    @content;
+  }
+}
+
+@mixin desktop-1919 {
+  @media screen and (max-width: 1919px) {
+    @content;
+  }
+}
+
+@mixin mobile-320 {
+  @media screen and (max-width: 321px) {
+    @content;
+  }
+}
+@mixin mobile-388 {
+  @media screen and (max-width: 388px) {
+    @content;
+  }
+}
+
+@mixin mobile-min-max-375 {
+  @media screen and (min-width: 321px) and (max-width: 374px) {
+    @content;
+  }
+}
+
+@mixin mobile-min-427 {
+  @media screen and (min-width: 427px) {
+    @content;
+  }
+}
+
+@mixin mobile-min-450 {
+  @media screen and (min-width: 450px) {
+    @content;
+  }
+}
+
+@mixin mobile-min-500 {
+  @media screen and (min-width: 500px) {
+    @content;
+  }
+}
+
+@mixin mobile-400 {
+  @media screen and (max-width: 388px) {
+    @content;
+  }
+}
+@mixin mobile-height-568 {
+  @media screen and (max-height: 569px) {
+    @content;
+  }
+}
+
+@mixin mobile-height-628 {
+  @media screen and (max-height: 629px) {
+    @content;
+  }
+}
+@mixin mobile-height-690 {
+  @media screen and (max-height: 691px) {
+    @content;
+  }
+}
+@mixin mobile-height-custom($height) {
+  @media screen and (max-height: $height) {
+    @content;
+  }
+}
+@mixin mobile-width-custom($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+@mixin desktop-width-custom($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin desktop-height-768 {
+  @media screen and (max-height: 769px) {
+    @content;
+  }
+}
+@mixin desktop-1090 {
+  @media screen and (max-width: 1090px) {
+    @content;
+  }
+}
+
+@mixin desktop-1367-to-1440 {
+  @media screen and (min-width: 1376px) and (max-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin desktop-1024 {
+  @media screen and (min-width: 1024px) and (max-width: 1124px) {
+    @content;
+  }
+}
+@mixin desktop-1124 {
+  @media screen and (min-width: 1124px) and (max-width: 1224px) {
+    @content;
+  }
+}
+@mixin desktop-1224 {
+  @media screen and (min-width: 1224px) and (max-width: 1365px) {
+    @content;
+  }
+}
+
+@mixin d-1024 {
+  @media screen and (min-width: 768px) and (max-width: 1335px) {
+    @content;
+  }
+}
+
+@mixin desktop-1365 {
+  @media screen and (min-width: 1335px) and (max-width: 1800px) {
+    @content;
+  }
+}
+
+@mixin mobile-landscape {
+  @media screen and (orientation: landscape) {
+    @content;
+  }
+}
+@mixin mobile-landscape-height {
+  @media screen and (orientation: landscape) and (max-height: 650px) {
+    @content;
+  }
+}
+
+$z-index: (
+  max: 2000,
+  level6: 1200,
+  level5: 1000,
+  level4: 500,
+  level3: 100,
+  lev3: 3,
+  level2: 2,
+  level1: 1,
+  negative: -1,
+);
+
+@function z-index($key) {
+  @return map-get($z-index, $key);
+}
+
+$font-size-map: (
+  size-8: var(--font-size-10),
+  size-10: var(--font-size-12),
+  size-12: var(--font-size-14),
+  size-14: var(--font-size-16),
+  size-16: var(--font-size-18),
+  size-18: var(--font-size-20),
+  size-20: var(--font-size-20),
+  size-22: var(--font-size-24),
+  size-24: var(--font-size-26),
+  size-28: var(--font-size-30),
+);
+
+@mixin fontSize($key) {
+  font-size: map-get($font-size-map, $key);
+  line-height: var(--line-height-#{$key});
+}
+
+@mixin z-index($key) {
+  z-index: z-index($key);
+}
+
+@mixin flex($justify-content, $align-items) {
+  @include flex-align($justify-content, $align-items);
+
+  display: flex;
+}
+
+@mixin flex-column() {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-align($justify-content, $align-items) {
+  align-items: $align-items;
+  justify-content: $justify-content;
+}
+
+@mixin scrollbar($width, $margin, $border-radius, $thumb-bg, $track-bg) {
+  @supports not selector(::-webkit-scrollbar) {
+    scrollbar-width: thin;
+    scrollbar-color: $thumb-bg transparent;
+  }
+
+  // For Google Chrome
+  ::-webkit-scrollbar,
+  &::-webkit-scrollbar {
+    width: $width;
+    margin: $margin;
+    height: $width;
+  }
+
+  ::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-thumb {
+    border-radius: $border-radius;
+    background: $thumb-bg;
+  }
+
+  ::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-track {
+    background: $track-bg;
+  }
+}
+
+@mixin counter-size($size, $height: true) {
+  @if $height {
+    @media only screen and (max-width: 1567px) {
+      height: $size * 0.8;
+    }
+
+    @media only screen and (max-width: 1367px) {
+      height: $size * 0.7;
+    }
+
+    @media only screen and (min-width: 1568px) {
+      height: $size;
+    }
+  } @else {
+    @media only screen and (max-width: 1567px) {
+      width: $size * 0.8;
+    }
+
+    @media only screen and (max-width: 1367px) {
+      width: $size * 0.7;
+    }
+
+    @media only screen and (min-width: 1568px) {
+      width: $size;
+    }
+  }
+}
+
+@mixin position($size, $property) {
+  @media only screen and (max-width: 1567px) {
+    #{$property}: $size * 0.8;
+  }
+
+  @media only screen and (max-width: 1367px) {
+    #{$property}: $size * 0.7;
+  }
+
+  @media only screen and (min-width: 1568px) {
+    #{$property}: $size;
+  }
+}
+
+@mixin shakeAnimation() {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+
+  @keyframes shake {
+    10%,
+    90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+      transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+}
+@mixin InputBoxShadow(
+  $h: var(--size-40),
+  $bg: var(--primary-dark-blue-main),
+  $txt: var(--functional-white-rgb)
+) {
+  $box-shadow: 0 0 0 calc($h * 2) $bg inset;
+  box-shadow: $box-shadow;
+  &:-webkit-autofill {
+    -webkit-background-clip: text !important;
+    -webkit-box-shadow: $box-shadow !important;
+    -webkit-text-fill-color: rgba($txt, 0.6) !important;
+    &:focus {
+      -webkit-background-clip: text !important;
+      -webkit-box-shadow: $box-shadow !important;
+      -webkit-text-fill-color: rgba($txt, 0.6) !important;
+    }
+  }
+}
+
+@mixin no-scrollbar() {
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-track {
+    display: none;
+  }
+  @supports not selector(::-webkit-scrollbar) {
+    scrollbar-width: none;
+    scrollbar-color: transparent transparent;
+  }
+}
+
+@mixin skeleton(
+  $display: block,
+  $bkColor: rgba(var(--functional-white-rgb), 0.2)
+) {
+  display: $display;
+  background-color: $bkColor;
+}
+
+@mixin toolTip(
+  $right: 100%,
+  $top: 50%,
+  $translateY: -50%,
+  $translateX: -8px,
+  $arrowRotate: 0deg,
+  $arrowTop: -16px,
+  $arrowLeft: 50%,
+  $arrowTranslateX: -50%,
+  $position: absolute
+) {
+  position: $position;
+  right: $right;
+  top: $top;
+  transform: translateY($translateY) translatex($translateX);
+  border-radius: var(--size-8);
+  background-color: var(--primary-dark-blue-brighter2);
+  @include fontSize(size-12);
+  color: var(--functional-white);
+  font-family: var(--croco-sans-mkh);
+  padding: var(--size-12) var(--size-9);
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+
+  &:before {
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: $arrowTop;
+    @include z-index(level1);
+    border-radius: 2px;
+    left: $arrowLeft;
+    transform: translateX($arrowTranslateX) rotate($arrowRotate);
+    border-top: solid 9px transparent;
+    border-bottom: solid 9px var(--primary-dark-blue-brighter2);
+    border-left: solid 9px transparent;
+    border-right: solid 9px transparent;
+  }
+
+  @include desktop-1366 {
+    @include fontSize(size-10);
+    padding: var(--size-10) var(--size-7);
+  }
+}
+
+@mixin pickerGrid($numberOfItems: 6) {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(calc(100% / $numberOfItems), 1fr)
+  );
+  grid-column-gap: var(--size-16);
+  column-gap: var(--size-16);
+  grid-row-gap: var(--size-16);
+  row-gap: var(--size-16);
+  padding: var(--size-16);
+
+  @include desktop-1919 {
+    padding: var(--size-12);
+    grid-column-gap: var(--size-12);
+    column-gap: var(--size-12);
+    grid-row-gap: var(--size-12);
+    row-gap: var(--size-12);
+  }
+  @include desktop-width-custom(1365px) {
+    padding: var(--size-8);
+    grid-column-gap: var(--size-8);
+    column-gap: var(--size-8);
+    grid-row-gap: var(--size-8);
+    row-gap: var(--size-8);
+  }
+}
+
+@mixin multiGameView() {
+  height: 100%;
+  width: 100%;
+
+  &__frame {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 8px;
+    height: 100%;
+    width: 100%;
+    @include skeleton;
+
+    iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@mixin ellipsis($width) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: $width;
+}
+
+@mixin defaultScroll($scrollBar: 2px) {
+  @supports not selector(::-webkit-scrollbar) {
+    scrollbar-width: thin;
+  }
+
+  &::-webkit-scrollbar {
+    display: block;
+    width: $scrollBar;
+    margin: 0;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(#1e77a6, 0.5);
+    border-radius: 17px;
+  }
+}
