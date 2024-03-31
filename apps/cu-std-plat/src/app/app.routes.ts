@@ -3,6 +3,7 @@ import { LayoutContainerComponent } from '../components/layout/layout-container.
 import { loadRemoteModule } from '@angular-architects/module-federation';
 export const appRoutes: Route[] = [
   {
+    path: '',
     component: LayoutContainerComponent,
     children: [
       {

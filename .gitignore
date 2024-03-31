@@ -37,6 +37,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
 .nx/cache
+.nx
 .angular
+key.pem
+cert.pem
+combined.pem
