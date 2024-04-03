@@ -1,0 +1,11 @@
+<div>
+  <h2>Screenshot Recognition Component</h2>
+  <video #videoElement width="640" height="480" autoplay muted></video>
+  <button (click)="captureScreenshot()">Capture Screenshot</button>
+  <canvas
+    #canvasElement
+    width="640"
+    height="480"
+    style="display: none"
+  ></canvas>
+</div>
