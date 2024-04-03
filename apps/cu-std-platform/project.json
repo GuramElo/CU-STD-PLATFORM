@@ -1,0 +1,24 @@
+{
+  "name": "cu-std-platform",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/cu-std-platform/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "cu-std-platform:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "cu-std-platform:build:development"
+        },
+        "production": {
+          "buildTarget": "cu-std-platform:build:production"
+        }
+      }
+    }
+  }
+}
