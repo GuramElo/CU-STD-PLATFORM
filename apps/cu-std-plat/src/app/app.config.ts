@@ -6,6 +6,7 @@ import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
+import {BrowserModule} from "@angular/platform-browser";
 
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
@@ -18,6 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(appRoutes),
     { provide: NZ_ICONS, useValue: icons },
     importProvidersFrom(BrowserAnimationsModule),
+    importProvidersFrom(BrowserModule),
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     // { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
