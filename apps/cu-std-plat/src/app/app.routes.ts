@@ -24,6 +24,15 @@ export const appRoutes: Route[] = [
             exposedModule: './Routes',
           }).then((f) => f['appRoutes']),
       },
+      {
+        path: 'ocr',
+        loadChildren: () =>
+          loadRemoteModule({
+            type: 'manifest',
+            remoteName: 'cu-std-ocr',
+            exposedModule: './Routes',
+          }).then((f) => f['appRoutes']),
+      },
     ],
   },
 ];

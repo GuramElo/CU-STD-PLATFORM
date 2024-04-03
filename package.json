@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "run:all:dev": "nx run-many --target=serve --projects cu-std-plat,cu-std-forms,cu-std-home --maxParallel=100 --host cukbook.com --disable-host-check --ssl",
-    "build:all:dev": "nx run-many --target=build --projects cu-std-plat,cu-std-forms,cu-std-home --parallel",
+    "run:all:dev": "nx run-many --target=serve --projects cu-std-plat,cu-std-forms,cu-std-home,cu-std-ocr --maxParallel=100 --host cukbook.com --disable-host-check --ssl",
+    "build:all:dev": "nx run-many --target=build --projects cu-std-plat,cu-std-forms,cu-std-home,cu-std-ocr --parallel",
     "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
@@ -18,9 +18,12 @@
     "@angular/platform-browser-dynamic": "~17.3.0",
     "@angular/router": "~17.3.0",
     "@nx/angular": "18.2.1",
+    "@techstark/opencv-js": "^4.9.0-release.3",
     "ng-zorro-antd": "^17.3.0",
     "normalize.css": "^8.0.1",
+    "opencv.js": "^1.2.1",
     "rxjs": "~7.8.0",
+    "tesseract.js": "^5.0.5",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },

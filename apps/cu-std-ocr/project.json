@@ -1,0 +1,102 @@
+{
+  "name": "cu-std-ocr",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/cu-std-ocr/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:webpack-browser",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/cu-std-ocr",
+        "index": "apps/cu-std-ocr/src/index.html",
+        "main": "apps/cu-std-ocr/src/main.ts",
+        "polyfills": [
+          "zone.js"
+        ],
+        "tsConfig": "apps/cu-std-ocr/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/cu-std-ocr/src/favicon.ico",
+          "apps/cu-std-ocr/src/assets"
+        ],
+        "styles": [
+          "apps/cu-std-ocr/src/styles.scss"
+        ],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/cu-std-ocr/webpack.config.js"
+        },
+        "commonChunk": false
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/cu-std-ocr/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nx/angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "cu-std-ocr:build:production"
+        },
+        "development": {
+          "buildTarget": "cu-std-ocr:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 3101,
+        "publicHost": "http://localhost:3101"
+      }
+    },
+    "extract-i18n": {
+      "executor": "ngx-build-plus:extract-i18n",
+      "options": {
+        "buildTarget": "cu-std-ocr:build",
+        "extraWebpackConfig": "apps/cu-std-ocr/webpack.config.js"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "apps/cu-std-ocr/jest.config.ts"
+      }
+    }
+  }
+}
