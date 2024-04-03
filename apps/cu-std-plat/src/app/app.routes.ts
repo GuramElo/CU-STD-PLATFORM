@@ -13,7 +13,7 @@ export const appRoutes: Route[] = [
             type: 'manifest',
             remoteName: 'cu-std-home',
             exposedModule: './Routes',
-          }).then((f) => f['appRoutes']),
+          }).then((f) => f.appRoutes),
       },
       {
         path: 'forms',
@@ -22,7 +22,7 @@ export const appRoutes: Route[] = [
             type: 'manifest',
             remoteName: 'cu-std-forms',
             exposedModule: './Routes',
-          }).then((f) => f['appRoutes']),
+          }).then((f) => f.appRoutes),
       },
     ],
   },
