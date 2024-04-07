@@ -64,7 +64,13 @@
           "outputHashing": "all",
           "customWebpackConfig": {
             "path": "apps/cu-std-plat/webpack.prod.config.js"
-          }
+          },
+          "fileReplacements": [
+            {
+              "replace": "apps/cu-std-plat/src/environments/environment.ts",
+              "with": "apps/cu-std-plat/src/environments/environment.production.ts"
+            }
+          ]
         },
         "development": {
           "buildOptimizer": false,
@@ -72,7 +78,13 @@
           "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
-          "namedChunks": true
+          "namedChunks": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/cu-std-plat/src/environments/environment.ts",
+              "with": "apps/cu-std-plat/src/environments/environment.development.ts"
+            }
+          ]
         }
       },
       "defaultConfiguration": "production"

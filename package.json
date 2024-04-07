@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "run:all:dev": "nx run-many --target=serve --projects cu-std-plat,cu-std-forms,cu-std-home,cu-std-ocr --maxParallel=100 --host cukbook.com --disable-host-check --ssl",
-    "build:all:dev": "nx run-many --target=build --projects cu-std-plat,cu-std-forms,cu-std-home,cu-std-ocr --parallel",
-    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
+    "run:all:dev": "nx run-many --target=serve --projects cu-std-plat,cu-std-forms,cu-std-home,cu-std-ocr --maxParallel=100 --host cukbook.com --disable-host-check --ssl --configuration development",
+    "run:all:prod": "nx run-many --target=serve --projects cu-std-plat,cu-std-forms,cu-std-home,cu-std-ocr --maxParallel=100 --host cukbook.com --disable-host-check --ssl --configuration production",
+    "build:all:dev": "nx run-many --target=build --projects cu-std-plat,cu-std-forms,cu-std-home,cu-std-ocr --parallel --configuration development",
+    "build:all:prod": "nx run-many --target=build --projects cu-std-plat,cu-std-forms,cu-std-home,cu-std-ocr --parallel --configuration production",
+    "run:all:that-came-with-init-build": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
   "dependencies": {

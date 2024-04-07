@@ -2,9 +2,36 @@
   <nz-header>
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
-      <li nz-menu-item nzSelected>nav 1</li>
-      <li nz-menu-item>nav 2</li>
-      <li nz-menu-item>nav 3</li>
+      <li
+        #innerData2="routerLinkActive"
+        [nzSelected]="innerData2.isActive"
+        nz-menu-item
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{
+          exact: true
+        }"
+      >
+        Home
+      </li>
+      <li
+        #innerData3="routerLinkActive"
+        [nzSelected]="innerData3.isActive"
+        nz-menu-item
+        routerLink="/ocr"
+        routerLinkActive="active"
+      >
+        OCR
+      </li>
+      <li
+        #innerData4="routerLinkActive"
+        [nzSelected]="innerData4.isActive"
+        nz-menu-item
+        routerLink="/forms"
+        routerLinkActive="active"
+      >
+        Forms
+      </li>
     </ul>
   </nz-header>
   <nz-layout>

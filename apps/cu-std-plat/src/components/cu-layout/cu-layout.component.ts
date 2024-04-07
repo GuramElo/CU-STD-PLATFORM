@@ -15,7 +15,7 @@ import {
   NzBreadCrumbComponent,
   NzBreadCrumbItemComponent,
 } from 'ng-zorro-antd/breadcrumb';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-cu-layout',
@@ -34,6 +34,8 @@ import { RouterOutlet } from '@angular/router';
     NzMenuItemComponent,
     NzSubMenuComponent,
     RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
   ],
 })
 export class CuLayoutComponent {}
