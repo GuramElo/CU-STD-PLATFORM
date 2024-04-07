@@ -1,0 +1,5 @@
+{
+  "cu-std-forms": "http://localhost/forms/remoteEntry.js",
+  "cu-std-home": "http://localhost/home/remoteEntry.js",
+  "cu-std-ocr": "http://localhost/ocr/remoteEntry.js"
+}
