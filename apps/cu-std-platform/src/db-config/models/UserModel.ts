@@ -1,11 +1,19 @@
-import { Entity, Column, PrimaryColumn, OneToMany, ManyToMany } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryColumn,
+  OneToMany,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { v4 as generateUUID } from 'uuid';
 import { Post } from './PostModel';
 import { Comment } from './CommentModel';
 import { IPreferences } from '../interfaces/UserInterfaces';
+import { Friendship } from './FriendShipModel';
 @Entity()
 export class User {
-  @PrimaryColumn({ type: 'uuid', default: generateUUID() })
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({ unique: true, type: 'varchar', length: 50 })
@@ -23,18 +31,24 @@ export class User {
   @Column({ type: 'jsonb', nullable: true })
   preferences: IPreferences;
 
+  @Column({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
+
   @OneToMany(() => Post, (post) => post.author, {
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE',
   })
   posts: Post[];
 
-  @ManyToMany(() => User, (user) => user.friends)
-  friends: User[];
-
   @OneToMany(() => Comment, (comment) => comment.author, {
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE',
   })
   comments: Comment[];
+
+  @OneToMany(() => Friendship, (friendship) => friendship.user)
+  friendConnections: Friendship[];
+
+  @OneToMany(() => Friendship, (friendship) => friendship.friend)
+  friendConnectionsOf: Friendship[];
 }

@@ -6,6 +6,16 @@ export class CreateCommentDto {
   @IsString()
   @MinLength(1)
   content: string;
+
+  @ApiProperty()
+  @IsString()
+  @MinLength(1)
+  authorId: string;
+
+  @ApiProperty()
+  @IsString()
+  @MinLength(1)
+  postId: string;
 }
 export class UpdateCommentDto {
   @ApiProperty()

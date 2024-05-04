@@ -20,17 +20,11 @@ import { SOCIAL_MEDIA_PLATFORM_MODELS } from '../db-config/models';
       port: 8080,
       username: 'jigar',
       password: 'mysecretpassword',
-      database: 'cu_std-platform',
-      entities: [...SOCIAL_MEDIA_PLATFORM_MODELS],
+      database: 'jigar',
       synchronize: true,
       autoLoadEntities: true,
     }),
     SocialMediaPlatformModule,
   ],
 })
-export class AppModule {
-  constructor() {
-    Logger.log(`asdasdasd`);
-  }
-}
-//
+export class AppModule {}

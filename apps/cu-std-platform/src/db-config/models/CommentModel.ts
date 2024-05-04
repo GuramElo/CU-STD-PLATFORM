@@ -1,15 +1,17 @@
-import { Column, Entity, ManyToOne, PrimaryColumn } from 'typeorm';
-import { v4 as generateUUID } from 'uuid';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './UserModel';
 import { Post } from './PostModel';
 
 @Entity()
 export class Comment {
-  @PrimaryColumn({ type: 'uuid', default: generateUUID() })
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
   content: string;
+
+  @Column({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
 
   @ManyToOne(() => User, (user) => user.comments)
   author: User;

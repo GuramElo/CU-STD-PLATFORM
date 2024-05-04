@@ -9,8 +9,6 @@ import {
   ValidationPipe,
   Delete,
   HttpCode,
-  HttpException,
-  HttpStatus,
   Logger,
 } from '@nestjs/common';
 import { PostRepository } from '../db-config/repositories/post.repository';

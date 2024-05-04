@@ -2,16 +2,15 @@ import { v4 as generateUUID } from 'uuid';
 import {
   Column,
   Entity,
-  JoinTable,
   ManyToOne,
   OneToMany,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from './UserModel';
 import { Comment } from './CommentModel';
 @Entity()
 export class Post {
-  @PrimaryColumn({ type: 'uuid', default: generateUUID() })
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({ type: 'varchar' })
