@@ -1,11 +1,17 @@
-import { Logger, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { MulterModule } from '@nestjs/platform-express';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SocialMediaPlatformModule } from '../db-config/social-media-platform.module';
-import { SOCIAL_MEDIA_PLATFORM_MODELS } from '../db-config/models';
+import { APP_FILTER, APP_GUARD } from '@nestjs/core';
+import { QueryFailedFilter } from '../handlers/custom-ecxeption-handler.filter';
+import { RateLimiterGuard, RateLimiterModule } from 'nestjs-rate-limiter';
 
 @Module({
   imports: [
+    RateLimiterModule.register({
+      points: 10, // Number of points
+      duration: 60, // Per second
+    }),
     MulterModule.registerAsync({
       useFactory: () => ({
         dest: './upload',
@@ -25,6 +31,16 @@ import { SOCIAL_MEDIA_PLATFORM_MODELS } from '../db-config/models';
       autoLoadEntities: true,
     }),
     SocialMediaPlatformModule,
+  ],
+  providers: [
+    {
+      provide: APP_FILTER,
+      useClass: QueryFailedFilter,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RateLimiterGuard,
+    },
   ],
 })
 export class AppModule {}

@@ -1,12 +1,10 @@
 import {
   Entity,
   Column,
-  PrimaryColumn,
   OneToMany,
-  ManyToMany,
   PrimaryGeneratedColumn,
+  Index,
 } from 'typeorm';
-import { v4 as generateUUID } from 'uuid';
 import { Post } from './PostModel';
 import { Comment } from './CommentModel';
 import { IPreferences } from '../interfaces/UserInterfaces';
@@ -16,9 +14,11 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Index()
   @Column({ unique: true, type: 'varchar', length: 50 })
   username: string;
 
+  @Index()
   @Column({ unique: true, type: 'varchar', length: 50 })
   email: string;
 
