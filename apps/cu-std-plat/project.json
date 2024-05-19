@@ -102,7 +102,7 @@
       "defaultConfiguration": "development",
       "options": {
         "port": 3098,
-        "publicHost": "http://localhost:3098"
+        "publicHost": "https://cukbook.com:3098"
       }
     },
     "extract-i18n": {

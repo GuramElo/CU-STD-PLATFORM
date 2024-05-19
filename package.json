@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "start": "npm run run:all:dev",
     "run:all:dev": "nx run-many --target=serve --projects cu-std-plat,cu-std-forms,cu-std-home,cu-std-ocr --maxParallel=100 --host cukbook.com --disable-host-check --ssl --configuration development",
     "run:all:prod": "nx run-many --target=serve --projects cu-std-plat,cu-std-forms,cu-std-home,cu-std-ocr --maxParallel=100 --host cukbook.com --disable-host-check --ssl --configuration production",
     "build:all:dev": "nx run-many --target=build --projects cu-std-plat,cu-std-forms,cu-std-home,cu-std-ocr --parallel --configuration development",
@@ -19,6 +20,7 @@
     "@angular/platform-browser": "~17.3.0",
     "@angular/platform-browser-dynamic": "~17.3.0",
     "@angular/router": "~17.3.0",
+    "@formio/angular": "^7.0.0",
     "@nx/angular": "18.2.1",
     "@techstark/opencv-js": "^4.9.0-release.3",
     "ng-zorro-antd": "^17.3.0",
