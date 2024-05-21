@@ -21,7 +21,6 @@
     "@angular/platform-browser-dynamic": "~17.3.0",
     "@angular/router": "~17.3.0",
     "@angular/service-worker": "17.3.0",
-    "@formio/angular": "^7.0.0",
     "@nx/angular": "18.2.1",
     "@techstark/opencv-js": "^4.9.0-release.3",
     "ng-zorro-antd": "^17.3.0",

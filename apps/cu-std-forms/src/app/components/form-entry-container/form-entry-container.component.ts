@@ -1,18 +1,18 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormioForm, FormioModule } from '@formio/angular';
+// import { FormioForm, FormioModule } from '@formio/angular';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 
 @Component({
   selector: 'app-form-entry-container',
   standalone: true,
-  imports: [CommonModule, FormioModule],
+  imports: [CommonModule],
   templateUrl: './form-entry-container.component.html',
   styleUrl: './form-entry-container.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
 export class FormEntryContainerComponent {
-  formJSON: FormioForm = { display: 'form', components: [] };
+  // formJSON: FormioForm = { display: 'form', components: [] };
   form = {
     components: [
       {
