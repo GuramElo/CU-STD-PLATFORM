@@ -8,7 +8,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ENV_TOKEN_SHARED } from '@cu-std-shared';
 import { envConfig } from '../environments/environment';
-
+import { provideServiceWorker } from '@angular/service-worker';
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
 };
@@ -17,6 +17,10 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 );
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideServiceWorker('ngsw-worker.js', {
+      enabled: envConfig.isProd,
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
     {
       provide: ENV_TOKEN_SHARED,
       useValue: envConfig,

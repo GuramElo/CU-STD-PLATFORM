@@ -23,6 +23,7 @@
         "assets": [
           "apps/cu-std-plat/src/favicon.ico",
           "apps/cu-std-plat/src/assets",
+          "apps/cu-std-plat/src/manifest.webmanifest",
           {
             "glob": "**/*",
             "input": "./libs/cu-i/src/assets",
@@ -70,7 +71,9 @@
               "replace": "apps/cu-std-plat/src/environments/environment.ts",
               "with": "apps/cu-std-plat/src/environments/environment.production.ts"
             }
-          ]
+          ],
+          "serviceWorker": true,
+          "ngswConfigPath": "apps/cu-std-plat/src/ngsw-config.json"
         },
         "development": {
           "buildOptimizer": false,
