@@ -27,7 +27,7 @@ services:
       - postgres-data:/var/lib/postgresql/data
     networks:
       - app-network
-    mem_limit: 500m
+    mem_limit: 800m
 
 networks:
   app-network:
