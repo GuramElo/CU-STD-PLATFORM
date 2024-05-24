@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"  # Expose the port that your NestJS app uses
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://jigar:mysecretpassword@db:5432/mydb  # Ensure this is correct
+    mem_limit: 500m
+    networks:
+      - app-network
+
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - "8080:5432"  # Map port 5432 inside the container to 8080 on the host (use 5432 internally)
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_USER: jigar
+      POSTGRES_DB: mydb
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    mem_limit: 500m
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
+    driver: local

@@ -22,14 +22,24 @@ import { RateLimiterGuard, RateLimiterModule } from 'nestjs-rate-limiter';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 8080,
+      host: 'db', // Use the Docker service name as the host
+      port: 5432, // Use the internal Docker port for PostgreSQL
       username: 'jigar',
       password: 'mysecretpassword',
-      database: 'jigar',
+      database: 'mydb', // Ensure this matches the DB name given in Docker Compose
       synchronize: true,
       autoLoadEntities: true,
     }),
+    // TypeOrmModule.forRoot({
+    //   type: 'postgres',
+    //   host: 'localhost',
+    //   port: 8080,
+    //   username: 'jigar',
+    //   password: 'mysecretpassword',
+    //   database: 'jigar',
+    //   synchronize: true,
+    //   autoLoadEntities: true,
+    // }),
     SocialMediaPlatformModule,
   ],
   providers: [
