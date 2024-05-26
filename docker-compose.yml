@@ -29,7 +29,7 @@ services:
     image: postgres
     restart: always
     ports:
-      - "8080:5432"  # Map port 5432 inside the container to 8080 on the host (use 5432 internally)
+      - "5432:5432"
     environment:
       POSTGRES_PASSWORD: mysecretpassword
       POSTGRES_USER: jigar
