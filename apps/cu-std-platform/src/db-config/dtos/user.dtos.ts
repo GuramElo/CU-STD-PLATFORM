@@ -16,7 +16,7 @@ export class CreateUserDto {
 
   @ApiProperty()
   @IsEmail()
-  @MaxLength(50)
+  @MaxLength(150)
   email: string;
 
   @ApiProperty()
@@ -24,6 +24,13 @@ export class CreateUserDto {
   @MinLength(6)
   @MaxLength(50)
   password: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsOptional()
+  @MinLength(6)
+  @MaxLength(6)
+  otpCode: string;
 }
 export class UpdateUserDto {
   @ApiPropertyOptional()
@@ -35,7 +42,7 @@ export class UpdateUserDto {
 
   @ApiPropertyOptional()
   @IsEmail()
-  @MaxLength(50)
+  @MaxLength(150)
   @IsOptional()
   email?: string;
 
@@ -44,5 +51,25 @@ export class UpdateUserDto {
   @MinLength(6)
   @MaxLength(50)
   @IsOptional()
+  password?: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsOptional()
+  @MinLength(6)
+  @MaxLength(6)
+  otpCode: string;
+}
+export class LoginUserDto {
+  @ApiPropertyOptional()
+  @IsString()
+  @MinLength(6)
+  @MaxLength(150)
+  username?: string;
+
+  @ApiPropertyOptional()
+  @IsString()
+  @MinLength(6)
+  @MaxLength(50)
   password?: string;
 }

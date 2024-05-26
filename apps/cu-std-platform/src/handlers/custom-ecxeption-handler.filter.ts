@@ -4,6 +4,7 @@ import {
   ArgumentsHost,
   HttpException,
   HttpStatus,
+  Logger,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { QueryFailedError } from 'typeorm';
@@ -14,7 +15,7 @@ export class QueryFailedFilter implements ExceptionFilter {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
-
+    Logger.log('hhhhhhhhhhhhhhh', JSON.stringify(exception));
     if (exception.driverError['code'] === '23505') {
       // PostgreSQL unique violation
       response.status(HttpStatus.BAD_REQUEST).json({

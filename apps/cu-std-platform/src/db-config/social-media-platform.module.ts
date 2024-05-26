@@ -8,10 +8,20 @@ import { SOCIAL_MEDIA_PLATFORM_MODELS } from './models';
 import { PostController } from '../controllers/posts.controller';
 import { CommentController } from '../controllers/comments.controller';
 
-@Module({
-  controllers: [UsersController, PostController, CommentController],
-  imports: [TypeOrmModule.forFeature([...SOCIAL_MEDIA_PLATFORM_MODELS])],
-  providers: [UserRepository, PostRepository, CommentRepository],
-  exports: [TypeOrmModule, PostRepository, CommentRepository, UserRepository],
-})
-export class SocialMediaPlatformModule {}
+// @Module({
+//   controllers: [UsersController, PostController, CommentController],
+//   imports: [TypeOrmModule.forFeature([...SOCIAL_MEDIA_PLATFORM_MODELS])],
+//   providers: [UserRepository, PostRepository, CommentRepository],
+//   exports: [TypeOrmModule, PostRepository, CommentRepository, UserRepository],
+// })
+// export class SocialMediaPlatformModule {}
+export const SOCIAL_MEDIA_PLATFORM_REPOS = [
+  UserRepository,
+  PostRepository,
+  CommentRepository,
+];
+export const SOCIAL_MEDIA_PLATFORM_CONTROLLERS = [
+  UsersController,
+  PostController,
+  CommentController,
+];

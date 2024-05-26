@@ -1,10 +1,17 @@
 import { Module } from '@nestjs/common';
 import { MulterModule } from '@nestjs/platform-express';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { SocialMediaPlatformModule } from '../db-config/social-media-platform.module';
+import {
+  SOCIAL_MEDIA_PLATFORM_CONTROLLERS,
+  SOCIAL_MEDIA_PLATFORM_REPOS,
+} from '../db-config/social-media-platform.module';
 import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { QueryFailedFilter } from '../handlers/custom-ecxeption-handler.filter';
 import { RateLimiterGuard, RateLimiterModule } from 'nestjs-rate-limiter';
+import { generateORMProvider } from '../db-config/functions/generateORMProvider.function';
+import { MessagingModule } from '../messaging/messaging.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { SOCIAL_MEDIA_PLATFORM_MODELS } from '../db-config/models';
+import { AuthControllers, AuthImports, AuthProviders } from '../auth';
 
 @Module({
   imports: [
@@ -16,41 +23,27 @@ import { RateLimiterGuard, RateLimiterModule } from 'nestjs-rate-limiter';
       useFactory: () => ({
         dest: './upload',
         limits: {
-          fileSize: 25 * 1024 * 1024, //mb
+          fileSize: 25 * 1024 * 1024, //25mb
         },
       }),
     }),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'db', // Use the Docker service name as the host
-      port: 5432, // Use the internal Docker port for PostgreSQL
-      username: 'jigar',
-      password: 'mysecretpassword',
-      database: 'mydb', // Ensure this matches the DB name given in Docker Compose
-      synchronize: true,
-      autoLoadEntities: true,
-    }),
-    // TypeOrmModule.forRoot({
-    //   type: 'postgres',
-    //   host: 'localhost',
-    //   port: 8080,
-    //   username: 'jigar',
-    //   password: 'mysecretpassword',
-    //   database: 'jigar',
-    //   synchronize: true,
-    //   autoLoadEntities: true,
-    // }),
-    SocialMediaPlatformModule,
+    generateORMProvider(),
+    TypeOrmModule.forFeature([...SOCIAL_MEDIA_PLATFORM_MODELS]),
+    MessagingModule,
+    ...AuthImports,
   ],
   providers: [
-    {
-      provide: APP_FILTER,
-      useClass: QueryFailedFilter,
-    },
-    {
-      provide: APP_GUARD,
-      useClass: RateLimiterGuard,
-    },
+    // {
+    //   provide: APP_FILTER,
+    //   useClass: QueryFailedFilter,
+    // },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: RateLimiterGuard,
+    // },
+    ...SOCIAL_MEDIA_PLATFORM_REPOS,
+    ...AuthProviders,
   ],
+  controllers: [...SOCIAL_MEDIA_PLATFORM_CONTROLLERS, ...AuthControllers],
 })
 export class AppModule {}

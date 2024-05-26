@@ -22,8 +22,15 @@ export class User {
   @Column({ unique: true, type: 'varchar', length: 50 })
   email: string;
 
-  @Column({ type: 'varchar', length: 50 })
+  @Index()
+  @Column({ unique: true, type: 'varchar', length: 6, nullable: true })
+  otpCode: string;
+
+  @Column({ type: 'varchar', nullable: true })
   password: string;
+
+  @Column({ nullable: true, type: 'boolean', default: false })
+  isActive: boolean;
 
   @Column({ nullable: true, type: 'varchar' }) // Refresh token can be null initially
   refresh_token: string;
