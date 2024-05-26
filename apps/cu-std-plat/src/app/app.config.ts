@@ -14,6 +14,7 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
 };
@@ -36,5 +37,6 @@ export const appConfig: ApplicationConfig = {
     { provide: NZ_ICONS, useValue: icons },
     provideAnimations(),
     { provide: LocationStrategy, useClass: HashLocationStrategy },
+    importProvidersFrom(NzModalModule),
   ],
 };

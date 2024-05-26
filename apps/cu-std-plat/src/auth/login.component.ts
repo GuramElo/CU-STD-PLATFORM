@@ -38,7 +38,7 @@ import { NzAlertComponent } from 'ng-zorro-antd/alert';
               type="text"
               nz-input
               formControlName="userName"
-              placeholder="Username"
+              placeholder="მომხმარებლის სახელი"
             />
           </nz-input-group>
         </nz-form-control>
@@ -50,7 +50,7 @@ import { NzAlertComponent } from 'ng-zorro-antd/alert';
               type="password"
               nz-input
               formControlName="password"
-              placeholder="Password"
+              placeholder="პაროლი"
             />
           </nz-input-group>
         </nz-form-control>
@@ -58,11 +58,11 @@ import { NzAlertComponent } from 'ng-zorro-antd/alert';
       <div nz-row class="login-form-margin">
         <div nz-col [nzSpan]="12">
           <label nz-checkbox formControlName="remember">
-            <span>Remember me</span>
+            <span>დამიმახსოვრე</span>
           </label>
         </div>
-        <div nz-col [nzSpan]="12">
-          <a class="login-form-forgot">Forgot password</a>
+        <div nz-col [nzSpan]="12" style="text-align: center">
+          <a class="login-form-forgot">პაროლი დამავიწყდა</a>
         </div>
       </div>
       <nz-form-item *ngIf="getControlErrorMessage(null) as message">
@@ -73,10 +73,10 @@ import { NzAlertComponent } from 'ng-zorro-antd/alert';
         class="login-form-button login-form-margin"
         [nzType]="'primary'"
       >
-        Log in
+        შესვლა
       </button>
-      Or
-      <a>register now!</a>
+
+      <a>დარეგისტრირდი</a>
     </form>
   `,
   styles: [

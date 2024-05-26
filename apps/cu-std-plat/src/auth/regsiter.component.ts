@@ -16,7 +16,10 @@ import {
   NzFormLabelComponent,
   NzFormTooltipIcon,
 } from 'ng-zorro-antd/form';
-import { BASE_FORMS_ERROR_MESSAGE_DICTIONARY } from '@cu-std-shared';
+import {
+  BASE_FORMS_ERROR_MESSAGE_DICTIONARY,
+  confirmPasswordValidator,
+} from '@cu-std-shared';
 import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
@@ -29,49 +32,45 @@ import { NzOptionComponent, NzSelectComponent } from 'ng-zorro-antd/select';
     <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email"
-          >E-mail
+          >ელექტრონული ფოსტა
         </nz-form-label>
         <nz-form-control
           [nzSm]="14"
           [nzXs]="24"
-          nzErrorTip="The input is not valid E-mail!"
+          nzErrorTip="მეილი არავალიდურია"
         >
           <input nz-input formControlName="email" id="email" />
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired
-          >Password
+          >პაროლი
         </nz-form-label>
-        <nz-form-control
-          [nzSm]="14"
-          [nzXs]="24"
-          nzErrorTip="Please input your password!"
-        >
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="შეიყვანეთ პაროლი">
           <input
             nz-input
             type="password"
             id="password"
             formControlName="password"
-            (ngModelChange)="updateConfirmValidator()"
           />
+          <!--          (ngModelChange)="updateConfirmValidator()"-->
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired
-          >Confirm Password
+          >დაადასტურეთ პაროლი
         </nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
           <input
             nz-input
             type="password"
-            formControlName="checkPassword"
+            formControlName="confirmPassword"
             id="checkPassword"
           />
           <ng-template #errorTpl let-control>
-            @if (control.errors?.['required']) { Please confirm your password! }
-            @if (control.errors?.['confirm']) { Two passwords that you enter is
-            inconsistent! }
+            @if (control.errors?.['required']) { ველი სავალდებულოა } @if
+            (control.errors?.['passwordMismatch']) { პაროლები ერთმანეთს არ
+            ემთხვევა }
           </ng-template>
         </nz-form-control>
       </nz-form-item>
@@ -79,81 +78,22 @@ import { NzOptionComponent, NzSelectComponent } from 'ng-zorro-antd/select';
         <nz-form-label
           [nzSm]="6"
           [nzXs]="24"
-          nzFor="nickname"
-          nzRequired
-          nzTooltipTitle="What do you want other to call you"
-        >
-          <span>Nickname</span>
-        </nz-form-label>
-        <nz-form-control
-          [nzSm]="14"
-          [nzXs]="24"
-          nzErrorTip="Please input your nickname!"
-        >
-          <input nz-input id="nickname" formControlName="nickname" />
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired
-          >Phone Number
-        </nz-form-label>
-        <nz-form-control
-          [nzSm]="14"
-          [nzXs]="24"
-          [nzValidateStatus]="validateForm.controls['phoneNumber']"
-          nzErrorTip="Please input your phone number!"
-        >
-          <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
-            <ng-template #addOnBeforeTemplate>
-              <nz-select
-                formControlName="phoneNumberPrefix"
-                class="phone-select"
-              >
-                <nz-option nzLabel="+86" nzValue="+86"></nz-option>
-                <nz-option nzLabel="+87" nzValue="+87"></nz-option>
-              </nz-select>
-            </ng-template>
-            <input formControlName="phoneNumber" id="'phoneNumber'" nz-input />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="website" nzRequired
-          >Website
-        </nz-form-label>
-        <nz-form-control
-          [nzSm]="14"
-          [nzXs]="24"
-          nzErrorTip="Please input website!"
-        >
-          <input
-            nz-input
-            id="website"
-            formControlName="website"
-            placeholder="website"
-          />
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label
-          [nzSm]="6"
-          [nzXs]="24"
           nzFor="captcha"
-          nzRequired
-          nzTooltipTitle="Please click 'Get captcha'"
+          nzTooltipTitle="დაკლიკე და მიიღე Captcha"
           [nzTooltipIcon]="captchaTooltipIcon"
         >
-          Captcha
+          არ ვარ რობოტი
         </nz-form-label>
         <nz-form-control
           [nzSm]="14"
           [nzXs]="24"
-          nzErrorTip="Please input the captcha you got!"
-          nzExtra="We must make sure that your are a human."
+          nzErrorTip="შეიყვანეთ ტექტსი სურათიდან"
+          nzExtra="უნდა დავრწმუნდეთ, რომ ადამიანი ხართ"
         >
           <div nz-row [nzGutter]="8">
             <div nz-col [nzSpan]="12">
-              <input nz-input formControlName="captcha" id="captcha" />
+              <!--              formControlName="captcha"-->
+              <input nz-input id="captcha" />
             </div>
             <div nz-col [nzSpan]="12">
               <button nz-button (click)="getCaptcha($event)">
@@ -165,17 +105,17 @@ import { NzOptionComponent, NzSelectComponent } from 'ng-zorro-antd/select';
       </nz-form-item>
       <nz-form-item nz-row class="register-area">
         <nz-form-control [nzSpan]="14" [nzOffset]="6">
-          <label nz-checkbox formControlName="agree">
+          <label nz-checkbox formControlName="acceptTerms">
             <span>
-              I have read the
-              <a>agreement</a>
+              გავეცანი
+              <a>პირობებს</a>
             </span>
           </label>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item nz-row class="register-area">
         <nz-form-control [nzSpan]="14" [nzOffset]="6">
-          <button nz-button nzType="primary">Register</button>
+          <button nz-button nzType="primary">რეგისტრაცია</button>
         </nz-form-control>
       </nz-form-item>
     </form>
@@ -184,7 +124,7 @@ import { NzOptionComponent, NzSelectComponent } from 'ng-zorro-antd/select';
   styles: [
     `
       [nz-form] {
-        max-width: 600px;
+        max-width: 750px;
       }
 
       .ant-select.ant-select-in-form-item.phone-select {
@@ -218,15 +158,11 @@ export class CuFormRegisterComponent {
     ...BASE_FORMS_ERROR_MESSAGE_DICTIONARY,
   };
   validateForm: FormGroup<{
+    username: FormControl<string>;
     email: FormControl<string>;
     password: FormControl<string>;
-    checkPassword: FormControl<string>;
-    nickname: FormControl<string>;
-    phoneNumberPrefix: FormControl<'+86' | '+87'>;
-    phoneNumber: FormControl<string>;
-    website: FormControl<string>;
-    captcha: FormControl<string>;
-    agree: FormControl<boolean>;
+    confirmPassword: FormControl<string>;
+    acceptTerms: FormControl<boolean>;
   }>;
   captchaTooltipIcon: NzFormTooltipIcon = {
     type: 'info-circle',
@@ -246,13 +182,6 @@ export class CuFormRegisterComponent {
     }
   }
 
-  updateConfirmValidator(): void {
-    /** wait for refresh value */
-    Promise.resolve().then(() =>
-      this.validateForm.controls.checkPassword.updateValueAndValidity()
-    );
-  }
-
   confirmationValidator: ValidatorFn = (
     control: AbstractControl
   ): { [s: string]: boolean } => {
@@ -268,18 +197,17 @@ export class CuFormRegisterComponent {
     e.preventDefault();
   }
 
-  constructor(private fb: NonNullableFormBuilder) {
-    this.validateForm = this.fb.group({
-      email: ['', [Validators.email, Validators.required]],
-      password: ['', [Validators.required]],
-      checkPassword: ['', [Validators.required, this.confirmationValidator]],
-      nickname: ['', [Validators.required]],
-      phoneNumberPrefix: '+86' as '+86' | '+87',
-      phoneNumber: ['', [Validators.required]],
-      website: ['', [Validators.required]],
-      captcha: ['', [Validators.required]],
-      agree: [false],
-    });
+  constructor(private readonly fb: NonNullableFormBuilder) {
+    this.validateForm = this.fb.group(
+      {
+        username: ['', [Validators.required, Validators.minLength(3)]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', Validators.required],
+        acceptTerms: [false, Validators.requiredTrue],
+      },
+      { validators: [confirmPasswordValidator('password', 'confirmPassword')] }
+    );
   }
   protected getControlErrorMessage(controlName: string | null) {
     const errors = controlName

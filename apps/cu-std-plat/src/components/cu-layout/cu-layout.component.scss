@@ -5,9 +5,18 @@
   margin: 16px 30px 16px 0;
   float: left;
 }
-
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
 .header-menu {
   line-height: 64px;
+}
+.header-auth {
+  margin-left: auto;
+  display: flex;
+  grid-column-gap: 13px;
 }
 
 .sider-menu {
