@@ -32,24 +32,27 @@ async function bootstrap() {
     `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
   );
 }
-
-if (process.env.isProd) {
-  if (cluster.isPrimary) {
-    Logger.log(`Master ${process.pid} is running`);
-
-    for (let i = 0; i < numCPUs; i++) {
-      cluster.fork();
-    }
-    cluster.on('exit', (worker, code, signal) => {
-      Logger.log(`worker ${worker.process.pid} died`);
-    });
-  } else {
-    bootstrap()
-      .then()
-      .catch((err) => Logger.error('Nest application failed to start', err));
-  }
-} else {
-  bootstrap()
-    .then()
-    .catch((err) => Logger.error('Nest application failed to start', err));
-}
+bootstrap()
+  .then()
+  .catch((err) => Logger.error('Nest application failed to start', err));
+// TODO use and revise it for production
+// if (process.env.isProd) {
+//   if (cluster.isPrimary) {
+//     Logger.log(`Master ${process.pid} is running`);
+//
+//     for (let i = 0; i < numCPUs; i++) {
+//       cluster.fork();
+//     }
+//     cluster.on('exit', (worker, code, signal) => {
+//       Logger.log(`worker ${worker.process.pid} died`);
+//     });
+//   } else {
+//     bootstrap()
+//       .then()
+//       .catch((err) => Logger.error('Nest application failed to start', err));
+//   }
+// } else {
+//   bootstrap()
+//     .then()
+//     .catch((err) => Logger.error('Nest application failed to start', err));
+// }
