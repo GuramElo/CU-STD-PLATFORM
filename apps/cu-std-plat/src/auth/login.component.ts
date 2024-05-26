@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -15,7 +15,10 @@ import { NzInputDirective, NzInputGroupComponent } from 'ng-zorro-antd/input';
 import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
 import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
-import { BASE_FORMS_ERROR_MESSAGE_DICTIONARY } from '@cu-std-shared';
+import {
+  AuthService,
+  BASE_FORMS_ERROR_MESSAGE_DICTIONARY,
+} from '@cu-std-shared';
 import { NgIf } from '@angular/common';
 import { NzAlertComponent } from 'ng-zorro-antd/alert';
 
@@ -112,6 +115,7 @@ import { NzAlertComponent } from 'ng-zorro-antd/alert';
   standalone: true,
 })
 export class CuFormNormalLoginComponent {
+  private readonly authService: AuthService = inject(AuthService);
   protected readonly errorMessageDictionary: Record<string, string> = {
     ...BASE_FORMS_ERROR_MESSAGE_DICTIONARY,
   };
@@ -128,6 +132,14 @@ export class CuFormNormalLoginComponent {
   submitForm(): void {
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);
+      const formRawValue = this.validateForm.getRawValue();
+      this.authService
+        .signIn(formRawValue.userName, formRawValue.password)
+        .subscribe((res) => {
+          if (res.access_token) {
+            localStorage.setItem('access_token', res.access_token);
+          }
+        });
     } else {
       // this.validateForm.setErrors({
       //   userName: this.validateForm.value.userName,
