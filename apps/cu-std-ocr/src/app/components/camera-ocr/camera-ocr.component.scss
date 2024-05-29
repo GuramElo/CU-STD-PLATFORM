@@ -6,6 +6,7 @@
   }
   &__panel {
     @include mixins.flex(flex-start, center);
-    grid-column-gap: 16px;
+    @include mixins.flex-column();
+    grid-row-gap: 16px;
   }
 }

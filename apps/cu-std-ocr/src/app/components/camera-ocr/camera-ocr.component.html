@@ -1,8 +1,13 @@
 <div class="cont-wrapper">
   <h2>ტექსტის ამოცნობა</h2>
   <div class="cont__panel">
-    <video #videoElement width="640" height="480" autoplay muted></video>
-    <p>{{ recognizedText$() }}</p>
+    <video
+      #videoElement
+      style="width: 100%; aspect-ratio: 640 / 480"
+      autoplay
+      muted
+    ></video>
+    <p style="width: 100%; text-align: center">{{ recognizedText$() }}</p>
   </div>
   <button nz-button nzType="primary" (click)="captureScreenshot()">
     მოჭრა
