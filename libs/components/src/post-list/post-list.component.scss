@@ -1,0 +1,67 @@
+@use 'libs/cu-i/src/styles/mixins';
+* {
+  color: white;
+}
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.post {
+  border: 1px solid #ccc;
+  padding: 10px;
+  //border-radius: 5px;
+  background-color: rgba(#001529, 0.8);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.post-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.post-content h3,
+.post-content h4 {
+  margin: 5px 0;
+}
+
+.comments {
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  @include mixins.flex-column();
+  background-color: rgba(#001529, 0.3);
+  &__input {
+    @include mixins.flex(flex-start, flex-end);
+    grid-column-gap: 8px;
+  }
+  &__item {
+    margin-bottom: 16px;
+    & > img {
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+    }
+    &-text {
+      & > span {
+        font-size: 14px;
+        font-weight: bold;
+      }
+      font-size: 11px;
+      color: white;
+      width: 30%;
+      height: auto;
+      min-height: 30px;
+      max-height: 50px;
+      padding: 0 5px 5px;
+      text-align: left;
+      vertical-align: top;
+      background: rgba(#001529, 0.5);
+      border-radius: 12px;
+    }
+    @include mixins.flex(flex-start, flex-start);
+    grid-column-gap: 12px;
+  }
+}

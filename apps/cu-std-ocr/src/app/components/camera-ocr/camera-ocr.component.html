@@ -1,7 +1,12 @@
-<div>
-  <h2>Screenshot Recognition Component</h2>
-  <video #videoElement width="640" height="480" autoplay muted></video>
-  <button (click)="captureScreenshot()">Capture Screenshot</button>
+<div class="cont-wrapper">
+  <h2>ტექსტის ამოცნობა</h2>
+  <div class="cont__panel">
+    <video #videoElement width="640" height="480" autoplay muted></video>
+    <p>{{ recognizedText$() }}</p>
+  </div>
+  <button nz-button nzType="primary" (click)="captureScreenshot()">
+    მოჭრა
+  </button>
   <canvas
     #canvasElement
     width="640"

@@ -3,41 +3,45 @@ import {
   Component,
   ElementRef,
   OnDestroy,
-  OnInit,
+  signal,
   ViewChild,
 } from '@angular/core';
 import * as Tesseract from 'tesseract.js';
 import { OEM } from 'tesseract.js';
 import * as cv from '@techstark/opencv-js';
-
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { take, timer } from 'rxjs';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+@UntilDestroy()
 @Component({
   selector: 'app-camera-ocr',
   standalone: true,
   templateUrl: './camera-ocr.component.html',
   styleUrl: './camera-ocr.component.scss',
+  imports: [NzButtonComponent, NzTypographyModule],
 })
-export class CameraOcrComponent implements OnInit, OnDestroy, AfterViewInit {
+export class CameraOcrComponent implements OnDestroy, AfterViewInit {
   @ViewChild('videoElement') videoElement!: ElementRef;
   @ViewChild('canvasElement') canvasElement!: ElementRef;
+  recognizedText$ = signal('');
 
   tesseractWorker!: Tesseract.Worker;
 
   constructor() {
     (async () => {
       this.tesseractWorker = await Tesseract.createWorker('eng', OEM.DEFAULT, {
-        logger: (m) => console.log(m),
+        logger: (m) => console.warn(m),
       });
     })();
   }
-
-  ngOnInit(): void {}
   ngAfterViewInit() {
     this.setupCamera();
-    setTimeout(() => {
-      setInterval(() => {
-        this.captureScreenshot().then();
-      }, 1000);
-    }, 5000);
+    timer(3000, 3000)
+      .pipe(untilDestroyed(this))
+      .subscribe(() => {
+        // this.captureScreenshot().then();
+      });
   }
 
   async setupCamera() {
@@ -75,6 +79,7 @@ export class CameraOcrComponent implements OnInit, OnDestroy, AfterViewInit {
 
     // Perform text recognition using Tesseract.js
     const result = await this.recognizeText(imageData);
+    this.recognizedText$.set(result);
     console.log('Recognized Text:', result);
   }
 
@@ -90,5 +95,6 @@ export class CameraOcrComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy() {
     this.tesseractWorker.terminate();
+    console.log('midiii');
   }
 }

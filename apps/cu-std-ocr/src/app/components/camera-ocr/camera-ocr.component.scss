@@ -1,0 +1,11 @@
+@use 'libs/cu-i/src/styles/mixins';
+.cont {
+  &-wrapper {
+    @include mixins.flex-column();
+    grid-row-gap: 24px;
+  }
+  &__panel {
+    @include mixins.flex(flex-start, center);
+    grid-column-gap: 16px;
+  }
+}

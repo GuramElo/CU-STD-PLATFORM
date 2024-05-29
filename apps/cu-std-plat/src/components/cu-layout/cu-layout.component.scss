@@ -1,9 +1,15 @@
+@use 'libs/cu-i/src/styles/mixins';
 .logo {
-  width: 120px;
-  height: 31px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px 30px 16px 0;
   float: left;
+  width: 150px;
+  height: 100%;
+  @include mixins.flex(flex-start, center);
+  & > img {
+    aspect-ratio: 1/1;
+    height: 100%;
+    width: auto;
+    border-radius: 50%;
+  }
 }
 .header {
   display: flex;
