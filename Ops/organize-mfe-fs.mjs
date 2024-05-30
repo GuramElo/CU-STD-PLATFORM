@@ -19,9 +19,9 @@ handleRename(formsLocation, formsDestination);
 function handleRename(currentPath, newPath) {
   rename(currentPath, newPath, (err) => {
     if (err) {
-      console.error(`Error moving ${folder}:`, err);
+      console.error(`Error moving ${currentPath}:`, err);
     } else {
-      console.log(`${folder} moved successfully to ${destination}`);
+      console.log(`${newPath} moved successfully to ${destination}`);
     }
   });
 }
