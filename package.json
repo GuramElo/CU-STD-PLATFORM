@@ -9,7 +9,7 @@
     "build:all:dev": "nx run-many --target=build --projects cu-std-plat,cu-std-forms,cu-std-home,cu-std-ocr --parallel --configuration development",
     "build:all:prod": "nx run-many --target=build --projects cu-std-plat,cu-std-forms,cu-std-home,cu-std-ocr --parallel --configuration production",
     "reorganize:dist-fs": "node Ops/organize-mfe-fs.mjs",
-    "deploy": "npm run build:all:prod && npm run reorganize:dist-fs && cd dist/apps/cu-std-plat && git init && git add . && git commit -m \"automated_upload\" && git remote add origin https://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@github.com/GuramElo/GuramElo.github.io.git && git push -u origin main --force",
+    "deploy": "npm run build:all:prod && npm run reorganize:dist-fs && cd apps/cu-std-forms-external && npm run build && cd ../../ && cd dist/apps/cu-std-plat && git init && git add . && git commit -m \"automated_upload\" && git remote add origin https://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@github.com/GuramElo/GuramElo.github.io.git && git push -u origin main --force",
     "run:all:that-came-with-init-build": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
