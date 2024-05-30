@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormProjectEntryFacade } from '@cu-std-facade';
 
 @Component({
   standalone: true,
@@ -10,4 +11,10 @@ import { RouterModule } from '@angular/router';
 })
 export class AppComponent {
   title = 'cu-std-forms';
+  constructor() {
+    this._initFormEntryWebElement();
+  }
+  private _initFormEntryWebElement(): void {
+    inject(FormProjectEntryFacade);
+  }
 }
