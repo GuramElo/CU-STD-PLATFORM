@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { forkJoin, map, Observable, retry, take } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 import { ScriptLoadInterface, ScriptLoadStatusEnum } from './interfaces';
+import { EnvironmentService } from '@cu-std-shared';
 
 @Injectable({
   providedIn: 'root',
@@ -9,17 +10,20 @@ import { ScriptLoadInterface, ScriptLoadStatusEnum } from './interfaces';
 export class FormProjectEntryFacade {
   scripts: Record<string, boolean> = {};
 
-  constructor(@Inject(DOCUMENT) private readonly __doc__: Document) {
+  constructor(
+    @Inject(DOCUMENT) private readonly __doc__: Document,
+    private readonly environmentService: EnvironmentService
+  ) {
     this.load$().pipe(take(1)).subscribe();
   }
 
   load$(): Observable<boolean> {
-    const widgetsUrl = 'https://cukbook.com:3102';
+    const formsUrl = this.environmentService.config.externalFormsImportBaseUrl;
     const id = new Date().getUTCMilliseconds();
 
-    const main = `${widgetsUrl}/main.js`;
-    const polyfills = `${widgetsUrl}/polyfills.js`;
-    const runtime = `${widgetsUrl}/runtime.js`;
+    const main = `${formsUrl}/main.js`;
+    const polyfills = `${formsUrl}/polyfills.js`;
+    const runtime = `${formsUrl}/runtime.js`;
 
     return forkJoin([
       this.loadScript$(main),
