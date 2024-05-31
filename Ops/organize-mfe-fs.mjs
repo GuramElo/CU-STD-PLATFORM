@@ -16,6 +16,10 @@ const formsLocation = 'apps/cu-std-forms-external/dist/angular-form-builder';
 const formsDestination = 'dist/apps/cu-std-plat/cu-std-forms-external';
 handleRename(formsLocation, formsDestination);
 
+const chatLocation = 'apps/cu-std-chat-external/dist/VideoChatDemo';
+const chatDestination = 'dist/apps/cu-std-plat/cu-std-chat-external';
+handleRename(chatLocation, chatDestination);
+
 function handleRename(currentPath, newPath) {
   rename(currentPath, newPath, (err) => {
     if (err) {

@@ -34,6 +34,15 @@
       >
         ფორმები
       </li>
+      <li
+        #innerData5="routerLinkActive"
+        [nzSelected]="innerData5.isActive"
+        nz-menu-item
+        routerLink="/chat"
+        routerLinkActive="active"
+      >
+        ჩათი
+      </li>
     </ul>
     <div class="header-auth">
       <button nz-button nzType="primary" (click)="handleLoginClick()">
