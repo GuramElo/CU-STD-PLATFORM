@@ -12,6 +12,7 @@ import { MessagingModule } from '../messaging/messaging.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SOCIAL_MEDIA_PLATFORM_MODELS } from '../db-config/models';
 import { AuthControllers, AuthImports, AuthProviders } from '../auth';
+import { WebsocketService } from '../shared/signalling.service';
 
 @Module({
   imports: [
@@ -43,6 +44,7 @@ import { AuthControllers, AuthImports, AuthProviders } from '../auth';
     // },
     ...SOCIAL_MEDIA_PLATFORM_REPOS,
     ...AuthProviders,
+    WebsocketService,
   ],
   controllers: [...SOCIAL_MEDIA_PLATFORM_CONTROLLERS, ...AuthControllers],
 })
